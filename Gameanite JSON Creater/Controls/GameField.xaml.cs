@@ -21,7 +21,9 @@ namespace Gameanite_JSON_Creater.Controls
     /// </summary>
     public partial class GameField : UserControl
     {
-        public static readonly DependencyProperty GameaniteProperty = DependencyProperty.Register("Gameanite", typeof(Model.Gameanite), typeof(GameField), new PropertyMetadata(new PropertyChangedCallback(Gameanite_Changed)));
+        public static readonly DependencyProperty GameaniteProperty = DependencyProperty.Register("Gameanite",
+            typeof(Model.Gameanite), typeof(GameField), 
+            new PropertyMetadata(new PropertyChangedCallback(Gameanite_Changed)));
 
         public Gameanite_JSON_Creater.Model.Gameanite Gameanite
         {
@@ -31,11 +33,11 @@ namespace Gameanite_JSON_Creater.Controls
 
         public GameField()
         {
-            InitializeComponent();
-            
+            InitializeComponent();            
         }
 
-        public void UpdateDatagridSize(int height,int width)
+        
+        public void UpdateGridSize(int height,int width)
         {
             int squareLength = 30;
             for (int gY = 0; gY < height; gY++)
@@ -102,9 +104,7 @@ namespace Gameanite_JSON_Creater.Controls
             _uiParts.BorderThickness = new Thickness(3);
 
             Gameanite.SelectedPosition = new CardPosition(_column, _row);
-            System.Diagnostics.Debug.Print(Gameanite.SelectedPosition.PosX.ToString());
 
-            MessageBox.Show(string.Format("Button clicked at column {0}, row {1}", _column, _row));
         }
 
         private static void Gameanite_Changed(DependencyObject sender, DependencyPropertyChangedEventArgs args)

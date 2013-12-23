@@ -43,7 +43,7 @@ namespace Gameanite_JSON_Creater.Views
 
         public void NewFile(int height, int width)
         {
-            gameField.UpdateDatagridSize(height, width);
+            gameField.UpdateGridSize(height, width);
             Gameanite = new Model.Gameanite(gameField,height,width);
             Gameanite.GameBoardHeight = height;
             Gameanite.GameBoardWidth = width;
