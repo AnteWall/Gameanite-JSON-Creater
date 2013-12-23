@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="Gameanite_JSON_Creater.Controls.CardInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="340" d:DesignWidth="250"
+             Height="400">
+    <Grid Background="#eee" Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="250"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <DockPanel Background="#FFBB33" Grid.Row="0">
+            <TextBox Name="titleBox" Margin="20,0,20,0" Height="20"></TextBox>
+        </DockPanel>
+        <TextBox Name="descriptionBox" Margin="20"
+            Grid.Row="1" AcceptsReturn="True" TextWrapping="Wrap"></TextBox>
+        
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>               
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock Text="Next X:" VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Grid.Column="0"></TextBlock>
+            <TextBox Name="nextXBox"
+                     Grid.Column="1"
+                     Width="Auto"
+                     Height="Auto"
+                     Margin="0,5,0,5"></TextBox>
+
+            <TextBlock Text="Next Y:" VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Grid.Column="2"></TextBlock>
+            <TextBox Name="nextYBox" 
+                    Grid.Column="3"
+                     Width="Auto"
+                     Height="Auto"
+                     Margin="0,5,5,5"></TextBox>
+        </Grid>
+        
+        <Button Name="SaveCardBtn"
+                Grid.Row="3"
+                Margin="40,5,40,5"
+                Click="SaveCardBtn_Click">Save Card</Button>
+    </Grid>
+</UserControl>
