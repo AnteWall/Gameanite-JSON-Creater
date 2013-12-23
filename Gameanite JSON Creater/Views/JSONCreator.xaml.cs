@@ -21,6 +21,13 @@ namespace Gameanite_JSON_Creater.Views
     public partial class JSONCreator : UserControl
     {
         public static readonly DependencyProperty GameaniteProperty = DependencyProperty.Register("Gameanite", typeof(Model.Gameanite), typeof(JSONCreator), new PropertyMetadata(new PropertyChangedCallback(Gameanite_Changes)));
+        public static readonly DependencyProperty SelectedCardProperty = DependencyProperty.Register("SelectedCard", typeof(Model.Card), typeof(JSONCreator), new PropertyMetadata(new PropertyChangedCallback(SelectedCard_Changed)));
+
+        private static void SelectedCard_Changed(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var _this = d as Views.JSONCreator;
+            _this.DataContext = _this.SelectedCard;
+        }
 
         private static void Gameanite_Changes(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -28,6 +35,11 @@ namespace Gameanite_JSON_Creater.Views
             _this.DataContext = _this.Gameanite;           
         }
 
+        public Model.Card SelectedCard
+        {
+            get { return (Model.Card)GetValue(SelectedCardProperty); }
+            set { SetValue(SelectedCardProperty, value); }
+        }
 
         public Model.Gameanite Gameanite
         {

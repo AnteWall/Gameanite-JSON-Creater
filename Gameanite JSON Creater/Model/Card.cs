@@ -46,6 +46,10 @@ namespace Gameanite_JSON_Creater.Model
 
         public Card()
         {
+            Title = "New Card";
+            Description = "No Description";
+            NextX = 0;
+            NextY = 0;
 
         }
     }

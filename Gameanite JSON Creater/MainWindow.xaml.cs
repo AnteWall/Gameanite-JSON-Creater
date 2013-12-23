@@ -36,5 +36,10 @@ namespace Gameanite_JSON_Creater
             NewFile newFile = new NewFile(this);
             newFile.Show();
         }
+
+        private void exitProgram_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

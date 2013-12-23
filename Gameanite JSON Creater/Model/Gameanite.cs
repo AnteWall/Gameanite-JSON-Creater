@@ -12,6 +12,13 @@ namespace Gameanite_JSON_Creater.Model
         public int GameBoardHeight { get; set; }
         public int GameBoardWidth { get; set; }
         private CardPosition _selectedCardPos;
+        private Card _selectedCard;
+        public Card SelectedCard
+        {
+            get { return _selectedCard; }
+            set { _selectedCard = value; OnPropertyChanged("SelectedCard"); }
+        }
+
         public CardPosition SelectedPosition
         {
             get { return _selectedCardPos; }
@@ -40,9 +47,19 @@ namespace Gameanite_JSON_Creater.Model
             Cards = new Cards();
         }
 
-        public void ChangeCurrentCard()
+        public void ChangeCurrentCard(int x, int y)
         {
             
+            Card temp = Cards.GetCard(y, x);
+            if (temp == null)
+            {
+                SelectedCard = new Card();
+            }
+            else
+            {
+                SelectedCard = temp;
+            }
+
         }
 
         public void SaveCard(Card newCard)

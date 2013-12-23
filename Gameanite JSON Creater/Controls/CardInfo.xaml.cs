@@ -23,8 +23,17 @@ namespace Gameanite_JSON_Creater.Controls
     {
         public static readonly DependencyProperty GameaniteProperty = DependencyProperty.Register("Gameanite", typeof(Model.Gameanite), typeof(CardInfo), new PropertyMetadata(new PropertyChangedCallback(Gameanite_Changed)));
 
-        
+        public static readonly DependencyProperty SelectedCardProperty = DependencyProperty.Register("SelectedCard",
+    typeof(Model.Card), typeof(CardInfo),
+    new PropertyMetadata(new PropertyChangedCallback(SelectedCard_Changed)));
 
+
+
+        public Gameanite_JSON_Creater.Model.Card SelectedCard
+        {
+            get { return (Model.Card)GetValue(SelectedCardProperty); }
+            set { SetValue(SelectedCardProperty, value); }
+        }
 
         public Gameanite_JSON_Creater.Model.Gameanite Gameanite
         {
@@ -56,6 +65,19 @@ namespace Gameanite_JSON_Creater.Controls
             if (__this != null)
             {
                 var __gameanite = (Model.Gameanite)args.NewValue;
+            }
+        }
+        private static void SelectedCard_Changed(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var _this = d as Controls.CardInfo;
+
+            if (_this != null)
+            {
+                _this.titleBox.Text = _this.SelectedCard.Title;
+                _this.descriptionBox.Text = _this.SelectedCard.Title;
+                _this.nextXBox.Text = _this.SelectedCard.NextX.ToString();
+                _this.nextYBox.Text = _this.SelectedCard.NextY.ToString();
+
             }
         }
     }

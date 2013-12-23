@@ -104,7 +104,7 @@ namespace Gameanite_JSON_Creater.Controls
             _uiParts.BorderThickness = new Thickness(3);
 
             Gameanite.SelectedPosition = new CardPosition(_column, _row);
-
+            Gameanite.ChangeCurrentCard(_column, _row);
         }
 
         private static void Gameanite_Changed(DependencyObject sender, DependencyPropertyChangedEventArgs args)
