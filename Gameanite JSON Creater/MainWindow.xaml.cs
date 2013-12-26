@@ -1,4 +1,5 @@
 ﻿using Gameanite_JSON_Creater.Views;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +36,11 @@ namespace Gameanite_JSON_Creater
         {
             NewFile newFile = new NewFile(this);
             newFile.Show();
+        }
+
+        private void SaveJson_Click(object sender, RoutedEventArgs e)
+        {
+            jsonCreator.SaveFile();
         }
     }
 }

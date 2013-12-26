@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -47,6 +49,21 @@ namespace Gameanite_JSON_Creater.Views
             Gameanite = new Model.Gameanite(gameField,height,width);
             Gameanite.GameBoardHeight = height;
             Gameanite.GameBoardWidth = width;
+        }
+
+        internal void SaveFile()
+        {
+            SaveFileDialog _sd = new SaveFileDialog();
+            _sd.Filter = "JSON file (*.json)|*.json|Show All Files (*.*)|*.*";
+            _sd.FileName = "Untitled";
+            _sd.Title = "Save As";
+            if (_sd.ShowDialog() == true)
+            {
+                string filename = _sd.FileName;
+                System.Diagnostics.Debug.Print(filename);
+                string cardJson = JsonConvert.SerializeObject(Gameanite.Cards, Formatting.Indented);
+                System.Diagnostics.Debug.Print(cardJson);
+            }
         }
     }
 }

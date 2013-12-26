@@ -15,7 +15,7 @@
                 <Separator />
                 <MenuItem Header="_Open..." />
                 <Separator />
-                <MenuItem Header="_Create JSON" />
+                <MenuItem Header="_Create JSON" Name="SaveJson" Click="SaveJson_Click" />
                 <Separator />
                 <MenuItem Header="_Exit" />
             </MenuItem>
