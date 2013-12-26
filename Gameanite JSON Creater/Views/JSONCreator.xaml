@@ -14,7 +14,7 @@
         <controls:GameField 
             Gameanite="{Binding}"
             x:Name="gameField" ></controls:GameField>
-        <controls:CardInfo Gameanite="{Binding}"
+        <controls:CardInfo Gameanite="{Binding}" SelectedCard="{Binding SelectedCard}"
             Background="Gray" Margin="25,0,20,0" x:Name="cardField" Grid.Column="1"></controls:CardInfo>
     </Grid>
 </UserControl>

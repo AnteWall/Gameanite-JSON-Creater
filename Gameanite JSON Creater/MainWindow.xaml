@@ -17,7 +17,8 @@
                 <Separator />
                 <MenuItem Header="_Create JSON" Name="SaveJson" Click="SaveJson_Click" />
                 <Separator />
-                <MenuItem Header="_Exit" />
+                <MenuItem Header="_Exit"  Name="exitProgram"
+                          Click="exitProgram_Click"/>
             </MenuItem>
             <MenuItem Header="_Game Options">
                 <MenuItem Header="General Settings..." />

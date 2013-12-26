@@ -38,9 +38,15 @@ namespace Gameanite_JSON_Creater
             newFile.Show();
         }
 
+<<<<<<< HEAD
         private void SaveJson_Click(object sender, RoutedEventArgs e)
         {
             jsonCreator.SaveFile();
+=======
+        private void exitProgram_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+>>>>>>> b538405a9887055d4ecd6eee7945ae2bec6e0556
         }
     }
 }
