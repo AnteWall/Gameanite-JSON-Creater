@@ -63,6 +63,57 @@ namespace Gameanite_JSON_Creater.Views
             Gameanite = new Model.Gameanite(gameField,height,width);
             Gameanite.GameBoardHeight = height;
             Gameanite.GameBoardWidth = width;
+
+            CreateAxisDrawer(width,height);
+
+        }
+
+        private void CreateAxisDrawer(int width, int height)
+        {
+            int squareLength = 30;
+            for (int xAxis = 0; xAxis < width; xAxis++)
+            {
+                ColumnDefinition row = new ColumnDefinition();
+                row.Width = new GridLength(squareLength);            
+                borderXaxis.ColumnDefinitions.Add(row);
+            }
+
+            for (int y = 0; y < borderXaxis.RowDefinitions.Count(); y++)
+            {
+
+                for (int x = 0; x < borderXaxis.ColumnDefinitions.Count(); x++)
+                {
+                    TextBlock t = new TextBlock();
+                    t.Text = x.ToString();
+                    t.TextAlignment = TextAlignment.Center;
+                    borderXaxis.Children.Add(t);
+                    Grid.SetRow(t, y);
+                    Grid.SetColumn(t, x);
+                }
+            }
+
+            for (int yAxis = 0; yAxis < height; yAxis++)
+            {
+                RowDefinition row = new RowDefinition();
+                row.Height = new GridLength(squareLength);
+                borderYaxis.RowDefinitions.Add(row);
+            }
+
+            for (int x = 0; x < borderYaxis.ColumnDefinitions.Count(); x++)
+            {
+
+                for (int y = 0; y < borderYaxis.RowDefinitions.Count(); y++)
+                {
+                    TextBlock t = new TextBlock();
+                    t.Text = y.ToString();
+                    t.TextAlignment = TextAlignment.Center;
+                    t.VerticalAlignment = VerticalAlignment.Center;
+                    borderYaxis.Children.Add(t);
+                    Grid.SetRow(t, y);
+                    Grid.SetColumn(t, x);
+                }
+            }
+
         }
 
         public void SaveFile()

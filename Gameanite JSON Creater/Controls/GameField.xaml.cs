@@ -57,7 +57,6 @@ namespace Gameanite_JSON_Creater.Controls
                 
                 for (int x = 0; x < dataGrid.ColumnDefinitions.Count(); x++)
                 {
-                    System.Diagnostics.Debug.Print("X:" + x + " Y: " + y);
                     Label l = new Label();
                     l.Background = new SolidColorBrush(Colors.White);
                     l.BorderBrush = new SolidColorBrush(Colors.Gray);
