@@ -24,7 +24,9 @@
                 <MenuItem Header="General Settings..." Name="changeGeneralSettings"
                           Click="changeGeneralSettings_Click"/>
                 <Separator />
-                <MenuItem Header="_Add Rows and Columns" />
+                <MenuItem Name="addRowsAndColumns"
+                          Click="addRowsAndColumns_Click"
+                          Header="_Add Rows and Columns" />
             </MenuItem>
         </Menu>
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using Gameanite_JSON_Creater.Views.Popups;
+using Microsoft.Win32;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -68,8 +69,10 @@ namespace Gameanite_JSON_Creater.Views
 
         }
 
-        private void CreateAxisDrawer(int width, int height)
+        public void CreateAxisDrawer(int width, int height)
         {
+            borderXaxis.ColumnDefinitions.Clear();
+            borderYaxis.RowDefinitions.Clear();
             int squareLength = 30;
             for (int xAxis = 0; xAxis < width; xAxis++)
             {
@@ -158,6 +161,12 @@ namespace Gameanite_JSON_Creater.Views
         {
             GeneralSettings gen = new GeneralSettings(Gameanite);
             gen.Show();
+        }
+
+        internal void AddRowsAndColumns()
+        {
+            AddRowsAndColumns wnd = new AddRowsAndColumns(gameField,this,Gameanite);
+            wnd.Show();
         }
     }
 }

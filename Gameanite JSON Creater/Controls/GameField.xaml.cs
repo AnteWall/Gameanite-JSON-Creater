@@ -21,6 +21,8 @@ namespace Gameanite_JSON_Creater.Controls
     /// </summary>
     public partial class GameField : UserControl
     {
+        private int squareLength = 30;
+
         public static readonly DependencyProperty GameaniteProperty = DependencyProperty.Register("Gameanite",
             typeof(Model.Gameanite), typeof(GameField), 
             new PropertyMetadata(new PropertyChangedCallback(Gameanite_Changed)));
@@ -39,7 +41,6 @@ namespace Gameanite_JSON_Creater.Controls
         
         public void UpdateGridSize(int height,int width)
         {
-            int squareLength = 30;
             for (int gY = 0; gY < height; gY++)
             {
                 RowDefinition row = new RowDefinition();
@@ -116,5 +117,56 @@ namespace Gameanite_JSON_Creater.Controls
             }
         }
 
+
+        internal void AddRowsandColumns(int newHeight,int newWidth)
+        {
+            int curHeight = dataGrid.RowDefinitions.Count();
+            int curWidth = dataGrid.ColumnDefinitions.Count();
+
+            for (int gY = 0; gY < newHeight; gY++)
+            {
+                RowDefinition row = new RowDefinition();
+                row.Height = new GridLength(squareLength);
+                dataGrid.RowDefinitions.Add(row);
+            }
+            for (int gX = 0; gX < newWidth; gX++)
+            {
+                ColumnDefinition column = new ColumnDefinition();
+                column.Width = new GridLength(squareLength);
+                dataGrid.ColumnDefinitions.Add(column);
+            }
+
+            for (int y = 0; y < dataGrid.RowDefinitions.Count(); y++)
+            {
+
+                for (int x = curWidth; x < dataGrid.ColumnDefinitions.Count(); x++)
+                {
+                    Label l = new Label();
+                    l.Background = new SolidColorBrush(Colors.White);
+                    l.BorderBrush = new SolidColorBrush(Colors.Gray);
+                    l.BorderThickness = new Thickness(1);
+                    l.MouseDoubleClick += new MouseButtonEventHandler(GetCardOnPosition);
+                    dataGrid.Children.Add(l);
+                    Grid.SetRow(l, y);
+                    Grid.SetColumn(l, x);
+                }
+            }
+            for (int y = curHeight; y < dataGrid.RowDefinitions.Count(); y++)
+            {
+
+                for (int x = 0; x < dataGrid.ColumnDefinitions.Count(); x++)
+                {
+                    Label l = new Label();
+                    l.Background = new SolidColorBrush(Colors.White);
+                    l.BorderBrush = new SolidColorBrush(Colors.Gray);
+                    l.BorderThickness = new Thickness(1);
+                    l.MouseDoubleClick += new MouseButtonEventHandler(GetCardOnPosition);
+                    dataGrid.Children.Add(l);
+                    Grid.SetRow(l, y);
+                    Grid.SetColumn(l, x);
+                }
+            }
+
+        }
     }
 }

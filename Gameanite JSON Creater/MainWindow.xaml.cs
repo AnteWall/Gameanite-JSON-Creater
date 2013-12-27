@@ -51,5 +51,10 @@ namespace Gameanite_JSON_Creater
         {
             jsonCreator.ChangeGeneralSettings();
         }
+
+        private void addRowsAndColumns_Click(object sender, RoutedEventArgs e)
+        {
+            jsonCreator.AddRowsAndColumns();
+        }
     }
 }
