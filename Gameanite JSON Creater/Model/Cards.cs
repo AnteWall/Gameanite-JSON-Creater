@@ -34,5 +34,10 @@ namespace Gameanite_JSON_Creater.Model
             card.PosY = posY;
             cards.Add(card);
         }
+
+        public List<Card> GetAllCards()
+        {
+            return cards;
+        }
     }
 }

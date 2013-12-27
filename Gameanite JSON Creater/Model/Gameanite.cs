@@ -11,6 +11,8 @@ namespace Gameanite_JSON_Creater.Model
     {
         public int GameBoardHeight { get; set; }
         public int GameBoardWidth { get; set; }
+        public int GameStartX { get; set; }
+        public int GameStartY { get; set; }
         private CardPosition _selectedCardPos;
         private Card _selectedCard;
         public Card SelectedCard
@@ -35,6 +37,8 @@ namespace Gameanite_JSON_Creater.Model
 
         public Gameanite(int height,int width)
         {
+            GameStartX = 0;
+            GameStartY = 0;
             SelectedPosition = new CardPosition(0, 0);
             Cards = new Cards();
         }

@@ -1,7 +1,9 @@
 ﻿using Microsoft.Win32;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -63,7 +65,7 @@ namespace Gameanite_JSON_Creater.Views
             Gameanite.GameBoardWidth = width;
         }
 
-        internal void SaveFile()
+        public void SaveFile()
         {
             SaveFileDialog _sd = new SaveFileDialog();
             _sd.Filter = "JSON file (*.json)|*.json|Show All Files (*.*)|*.*";
@@ -71,11 +73,40 @@ namespace Gameanite_JSON_Creater.Views
             _sd.Title = "Save As";
             if (_sd.ShowDialog() == true)
             {
-                string filename = _sd.FileName;
-                System.Diagnostics.Debug.Print(filename);
-                string cardJson = JsonConvert.SerializeObject(Gameanite.Cards, Formatting.Indented);
-                System.Diagnostics.Debug.Print(cardJson);
+                JArray cardsArray = new JArray();
+                cardsArray = JArray.Parse(JsonConvert.SerializeObject(Gameanite.Cards.GetAllCards()));
+
+                var gameaniteJson = new JObject(
+                                        new JProperty("Gameanite",
+                                            new JObject(
+                                                new JProperty("Info",
+                                                    new JObject(
+                                                        new JProperty("GAME_ROWS", Gameanite.GameBoardHeight),
+                                                        new JProperty("GAME_COLUMNS", Gameanite.GameBoardWidth),
+                                                        new JProperty("START_X", Gameanite.GameStartX),
+                                                        new JProperty("START_Y", Gameanite.GameStartY)
+                                                        )
+                                                    ),
+                                                new JProperty("Cards", cardsArray)
+                                                )
+                                            )
+                                    );
+
+
+
+                using (Stream s = File.Open(_sd.FileName, FileMode.CreateNew))
+                using (StreamWriter sw = new StreamWriter(s))
+                {
+                    sw.Write(gameaniteJson);
+                }
+
             }
+        }
+
+        public void ChangeGeneralSettings()
+        {
+            GeneralSettings gen = new GeneralSettings(Gameanite);
+            gen.Show();
         }
     }
 }

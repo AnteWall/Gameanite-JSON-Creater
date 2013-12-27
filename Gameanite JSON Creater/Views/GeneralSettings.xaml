@@ -1,0 +1,29 @@
+﻿<Window x:Class="Gameanite_JSON_Creater.Views.GeneralSettings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="General Settings" Height="200" Width="300">
+    <Grid Background="Gray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Start Position X" VerticalAlignment="Center" Margin="10,0,0,0"></TextBlock>
+        <TextBox Grid.Row="1" Name="startPosXBox" Margin="10,0,0,0" Width="100" HorizontalAlignment="Left"></TextBox>
+        
+        <TextBlock Grid.Row="2" Text="Start Position Y" VerticalAlignment="Center" Margin="10,0,0,0"></TextBlock>
+        <TextBox Grid.Row="3" Name="startPosYBox" Margin="10,0,0,0" Width="100" HorizontalAlignment="Left"></TextBox>
+        <Grid Grid.Row="4" Margin="0,10,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Click="closeBtn_Click"
+                Name="closeBtn" Margin="10,0,10,0">Close</Button>
+            <Button Click="saveBtn_Click"
+                Grid.Column="1" Name="saveBtn" Margin="10,0,10,0">Save</Button>
+        </Grid>
+    </Grid>
+</Window>

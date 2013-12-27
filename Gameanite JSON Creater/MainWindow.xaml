@@ -21,7 +21,8 @@
                           Click="exitProgram_Click"/>
             </MenuItem>
             <MenuItem Header="_Game Options">
-                <MenuItem Header="General Settings..." />
+                <MenuItem Header="General Settings..." Name="changeGeneralSettings"
+                          Click="changeGeneralSettings_Click"/>
                 <Separator />
                 <MenuItem Header="_Add Rows and Columns" />
             </MenuItem>
