@@ -1,4 +1,5 @@
-﻿using Gameanite_JSON_Creater.Views.Popups;
+﻿using Gameanite_JSON_Creater.Model;
+using Gameanite_JSON_Creater.Views.Popups;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -119,6 +120,42 @@ namespace Gameanite_JSON_Creater.Views
 
         }
 
+        public void Readfile()
+        {
+            OpenFileDialog _od = new OpenFileDialog();
+            _od.Filter = "JSON file (*.json)|*.json|Show All Files (*.*)|*.*";
+            _od.Title = "Open File";
+            if (_od.ShowDialog() == true)
+            {
+                if (_od.FileName.Trim() != string.Empty)
+                {
+                    using (StreamReader r = new StreamReader(_od.FileName))
+                    {
+                        JObject obj = (JObject)JToken.ReadFrom(new JsonTextReader(r));
+                        //string json = r.ReadToEnd();
+                        //JObject gameanite = obj.GetValue("Gameanite");
+                        int height = (int)obj["Gameanite"]["Info"]["GAME_ROWS"];
+                        int width = (int)obj["Gameanite"]["Info"]["GAME_COLUMNS"];
+                        gameField.UpdateGridSize(height, width);
+                        CreateAxisDrawer(width, height);
+
+                        Gameanite.SelectedCard = null; //Prevent Crash
+                        Gameanite = new Model.Gameanite(gameField,height, width);
+                        Gameanite.GameStartX = (int)obj["Gameanite"]["Info"]["START_X"];
+                        Gameanite.GameStartY = (int)obj["Gameanite"]["Info"]["START_Y"];
+                        JArray cards = (JArray)obj["Gameanite"]["Cards"];
+                        
+                        foreach(var card in cards){
+                            Card c = JsonConvert.DeserializeObject<Card>(card.ToString());
+                            Gameanite.Cards.LoadCard(c);
+                        }
+                        gameField.DrawAllCards(Gameanite.Cards.GetAllCards());
+                        
+                    }
+                }
+            }
+        }
+
         public void SaveFile()
         {
             SaveFileDialog _sd = new SaveFileDialog();
@@ -148,7 +185,7 @@ namespace Gameanite_JSON_Creater.Views
 
 
 
-                using (Stream s = File.Open(_sd.FileName, FileMode.CreateNew))
+                using (Stream s = File.Open(_sd.FileName, FileMode.Create))
                 using (StreamWriter sw = new StreamWriter(s))
                 {
                     sw.Write(gameaniteJson);

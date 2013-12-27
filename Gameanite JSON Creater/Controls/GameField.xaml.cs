@@ -81,6 +81,17 @@ namespace Gameanite_JSON_Creater.Controls
            _label.Background = new SolidColorBrush(Colors.Green);
         }
 
+        public void DrawAllCards(List<Card> cards)
+        {
+            foreach(var card in cards)
+            {
+                var _label = dataGrid.Children.Cast<Control>().Where(e => Grid.GetRow(e) == card.PosY
+                    && Grid.GetColumn(e) == card.PosX).Single();
+
+                _label.Background = new SolidColorBrush(Colors.Green);
+            }
+        }
+
         private void ClearPrevClicked()
         {
             var _prevLabel = dataGrid.Children.Cast<Control>().Where(e => Grid.GetRow(e) == Gameanite.SelectedPosition.PosY

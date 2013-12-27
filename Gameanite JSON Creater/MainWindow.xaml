@@ -13,7 +13,8 @@
             <MenuItem Header="_File">
                 <MenuItem Name="CreateNewFile" Header="_New..." Click="CreateNewFile_Click" />
                 <Separator />
-                <MenuItem Header="_Open..." />
+                <MenuItem Name="openFile"
+                          Click="openFile_Click" Header="_Open..." />
                 <Separator />
                 <MenuItem Header="_Create JSON" Name="SaveJson" Click="SaveJson_Click" />
                 <Separator />

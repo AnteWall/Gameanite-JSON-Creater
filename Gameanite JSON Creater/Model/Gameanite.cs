@@ -35,17 +35,13 @@ namespace Gameanite_JSON_Creater.Model
         public event PropertyChangedEventHandler PropertyChanged;
         private Controls.GameField gameField;
 
-        public Gameanite(int height,int width)
+
+        public Gameanite(Controls.GameField gameField, int height, int width)
         {
+            GameBoardHeight = height;
+            GameBoardWidth = width;
             GameStartX = 0;
             GameStartY = 0;
-            SelectedPosition = new CardPosition(0, 0);
-            Cards = new Cards();
-        }
-
-        public Gameanite(Controls.GameField gameField, int p1, int p2)
-        {
-            // TODO: Complete member initialization
             this.gameField = gameField;
             SelectedPosition = new CardPosition(0, 0);
             Cards = new Cards();

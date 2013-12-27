@@ -16,6 +16,9 @@ namespace Gameanite_JSON_Creater.Model
             cards = new List<Card>();
         }
 
+        public void LoadCard(Card c){
+            cards.Add(c);
+        }
 
         public Card GetCard(int y,int x){
             foreach (var card in cards)
@@ -30,9 +33,22 @@ namespace Gameanite_JSON_Creater.Model
 
         public void SetCard(Card card,int posX,int posY)
         {
-            card.PosX = posX;
-            card.PosY = posY;
-            cards.Add(card);
+            if (GetCard(posY, posX) == null)
+            {
+                card.PosX = posX;
+                card.PosY = posY;
+                cards.Add(card);
+            }
+            else
+            {
+                System.Diagnostics.Debug.Print("Card Existed!, Replacing...");
+                var i = cards.FindIndex(x => x.PosX == posX && x.PosY == posY);
+                System.Diagnostics.Debug.Print("Index: " + i);
+                card.PosX = posX;
+                card.PosY = posY;
+                cards[i] = card;
+            }
+            
         }
 
         public List<Card> GetAllCards()

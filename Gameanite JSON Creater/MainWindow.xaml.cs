@@ -56,5 +56,10 @@ namespace Gameanite_JSON_Creater
         {
             jsonCreator.AddRowsAndColumns();
         }
+
+        private void openFile_Click(object sender, RoutedEventArgs e)
+        {
+            jsonCreator.Readfile();
+        }
     }
 }
